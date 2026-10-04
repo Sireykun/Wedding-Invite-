@@ -95,6 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 .join(' ');
             greetingEl.textContent = `Dear ${formattedName},`;
             greetingEl.style.display = 'block';
+
+            // Auto-fill RSVP Full Name field
+            const rsvpNameField = document.getElementById('name');
+            if (rsvpNameField) rsvpNameField.value = formattedName;
+
+            // Auto-fill Guestbook Name field
+            const guestbookNameField = document.getElementById('wisher-name');
+            if (guestbookNameField) guestbookNameField.value = formattedName;
         }
     }
 
