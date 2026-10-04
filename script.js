@@ -82,6 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
         drawParticles();
     }
 
+    // --- Guest Name from URL (?to=Name) ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('to');
+    if (guestName) {
+        const greetingEl = document.getElementById('guest-greeting');
+        if (greetingEl) {
+            // Capitalize first letter of each word
+            const formattedName = guestName
+                .split(' ')
+                .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(' ');
+            greetingEl.textContent = `Dear ${formattedName},`;
+            greetingEl.style.display = 'block';
+        }
+    }
+
     // --- 0.5. Ticket Intro Screen ---
     const ticketIntro = document.getElementById('ticket-intro');
 

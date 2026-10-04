@@ -1502,3 +1502,21 @@ footer p { color: var(--gold-light); letter-spacing: 2px; font-size: 0.95rem; te
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+/* =====================================================
+   GUEST PERSONALIZED GREETING
+===================================================== */
+.ticket-guest-greeting {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    animation: greetingGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes greetingGlow {
+    from { text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+    to   { text-shadow: 0 0 28px rgba(212, 175, 55, 0.8); }
+}
