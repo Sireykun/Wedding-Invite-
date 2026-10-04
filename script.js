@@ -133,30 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // // --- 0.6. Flower Drop Effect ---
-    // if (typeof WEDDING_CONFIG !== 'undefined' && WEDDING_CONFIG.theme.enableFlowerDrop) {
-    //     const flowerContainer = document.getElementById('flower-container');
-    //     const flowers = ['🌸', '🌺', '💮', '✨'];
-
-    //     function createFlower() {
-    //         if (!flowerContainer) return;
-    //         const flower = document.createElement('div');
-    //         flower.classList.add('flower-petal');
-    //         flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-
-    //         flower.style.left = Math.random() * 100 + 'vw';
-    //         flower.style.animationDuration = (Math.random() * 5 + 7) + 's'; 
-    //         flower.style.fontSize = (Math.random() * 1 + 1) + 'rem';
-
-    //         flowerContainer.appendChild(flower);
-
-    //         setTimeout(() => {
-    //             flower.remove();
-    //         }, 12000);
-    //     }
-
-    //     setInterval(createFlower, 600);
-    // }
 
     // --- 0. Initialize AOS Animations ---
     AOS.init({
@@ -391,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', startMusicOnInteraction);
     document.addEventListener('touchstart', startMusicOnInteraction);
 
-    // --- 2.5 Golden Scroll Progress Ring ---
+    // --- 2.5 Golden Scroll Progress Ring + Progress Bar (combined) ---
     const progressSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     progressSVG.setAttribute('class', 'scroll-ring');
     progressSVG.setAttribute('viewBox', '0 0 60 60');
@@ -401,27 +377,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const circle = progressSVG.querySelector('circle');
     const radius = circle.r.baseVal.value;
     const circumference = radius * 2 * Math.PI;
-    
     circle.style.strokeDasharray = `${circumference} ${circumference}`;
     circle.style.strokeDashoffset = circumference;
-    
-    const ring1 = document.querySelector('.ring-1');
-    const ring2 = document.querySelector('.ring-2');
 
+    // Single scroll listener handles both progress ring and scroll bar
+    const scrollProgress = document.getElementById('scroll-progress');
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollFraction = Math.min(Math.max(scrollTop / docHeight, 0), 1);
-        const draw = circumference * scrollFraction;
-        circle.style.strokeDashoffset = circumference - draw;
-
-        // 3D Parallax Rings
-        if (ring1 && ring2) {
-            // Rotate the rings in 3D space based on scroll position
-            ring1.style.transform = `rotateX(${75 + scrollTop * 0.08}deg) rotateY(${scrollTop * 0.12}deg) translateZ(${scrollTop * 0.05}px)`;
-            ring2.style.transform = `rotateX(${75 - scrollTop * 0.08}deg) rotateY(${-scrollTop * 0.12}deg) translateZ(${-scrollTop * 0.05}px)`;
-        }
-    });
+        circle.style.strokeDashoffset = circumference - circumference * scrollFraction;
+        if (scrollProgress) scrollProgress.style.width = (scrollFraction * 100) + '%';
+    }, { passive: true });
 
     // --- 3. Countdown Timer ---
     const weddingDate = new Date(WEDDING_CONFIG.weddingDate).getTime();
@@ -617,17 +584,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => sparkle.remove(), 800);
     });
 
-    // --- Scroll Progress Bar ---
-    const scrollProgress = document.getElementById('scroll-progress');
-    window.addEventListener('scroll', () => {
-        if (scrollProgress) {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollFraction = Math.min(Math.max(scrollTop / docHeight, 0), 1);
-            scrollProgress.style.width = (scrollFraction * 100) + '%';
-        }
-    });
-
     // --- Magnetic Button Physics ---
     const magnetBtns = document.querySelectorAll('.btn');
     magnetBtns.forEach(btn => {
@@ -685,8 +641,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }, (duration + 2) * 1000);
         }
         
-        // Spawn a new petal every 800ms
-        setInterval(spawnPetal, 800);
+        // Spawn a new petal every 1800ms (reduced DOM thrashing)
+        setInterval(spawnPetal, 1800);
         
         // Spawn some initial petals
         for(let i=0; i<10; i++) {
