@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phanu & Linna - Wedding Invitation</title>
+    <meta name="description" content="Join us in celebrating the wedding of Phanu & Linna. You are warmly invited.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Cinzel:wght@400;600;700&family=Kantumruy+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <!-- Intro Ticket Screen -->
+    <div id="ticket-intro" class="ticket-intro">
+        <video autoplay muted loop playsinline class="ticket-video-bg">
+            <source id="ticket-video-source" src="" type="video/mp4">
+        </video>
+        <div class="ticket-content">
+            <div class="ticket-border">
+                <p class="ticket-top-label">You are invited to</p>
+                <h3 class="khmer-text ticket-khmer">លិខិតអញ្ជើញ</h3>
+                <div class="ticket-divider"><span>&#10022;</span></div>
+                <h2 class="ticket-names">Phanu &amp; Linna</h2>
+                <p class="ticket-sub">Wedding Invitation</p>
+                <div class="ticket-date-badge" id="ticket-date-badge">Dec 31, 2026</div>
+                <div class="ticket-divider"><span>&#10022;</span></div>
+                <button id="open-invite-btn" class="btn open-btn">Tap to Open &#10022;</button>
+                <p class="ticket-hint">Click anywhere to continue</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source id="music-source" src="" type="audio/mpeg">
+    </audio>
+
+    <!-- Main Website Background Video -->
+    <video id="main-video-bg" class="main-video-bg" autoplay muted loop playsinline>
+        <source id="main-video-source" src="" type="video/mp4">
+    </video>
+
+    <!-- 3D Scroll Parallax Rings -->
+    <div id="scroll-rings-container">
+        <model-viewer src="ring.glb" 
+                      auto-rotate 
+                      camera-controls 
+                      disable-zoom 
+                      shadow-intensity="1" 
+                      environment-image="neutral"
+                      class="parallax-ring ring-1"></model-viewer>
+        
+        <model-viewer src="ring.glb" 
+                      auto-rotate 
+                      camera-controls 
+                      disable-zoom 
+                      shadow-intensity="1" 
+                      environment-image="neutral"
+                      class="parallax-ring ring-2"></model-viewer>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Falling Petals Background -->
+    <div id="falling-petals-container"></div>
+
+    <!-- Sticky Navigation -->
+    <nav class="site-nav" id="site-nav">
+        <div class="container nav-inner">
+            <a href="#home" class="nav-brand">P <span>&amp;</span> L</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#gallery">Our Story / <span class="khmer-nav">រឿងរ៉ាវ</span></a></li>
+                <li><a href="#events">Events / <span class="khmer-nav">កម្មវិធី</span></a></li>
+                <li><a href="#rsvp">RSVP / <span class="khmer-nav">ឆ្លើយតប</span></a></li>
+                <li><a href="#guestbook">Guestbook / <span class="khmer-nav">ចំណារពរ</span></a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="music-toggle" class="music-toggle disk" aria-label="Toggle background music">
+                    <span class="icon">&#127925;</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        <div class="container hero-content">
+            <div class="hero-ornament" data-aos="fade-down" data-aos-duration="1000">
+                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.85; filter: drop-shadow(0 0 8px rgba(212,175,55,0.4));">
+                    <path d="M50 5 C50 5, 75 30, 85 55 C95 80, 70 95, 50 95 C30 95, 5 80, 15 55 C25 30, 50 5, 50 5 Z" />
+                    <path d="M50 20 C50 20, 68 45, 68 68 C68 85, 50 95, 50 95 C50 95, 32 85, 32 68 C32 45, 50 20, 50 20 Z" />
+                    <path d="M50 40 C50 40, 56 60, 56 75 C56 85, 50 90, 50 90 C50 90, 44 85, 44 75 C44 60, 50 40, 50 40 Z" />
+                </svg>
+            </div>
+            <h3 class="subtitle" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100">
+                <span id="khmer-subtitle">អញ្ជើញចូលរួមពិធីមង្គលការ</span><br>
+                <span id="english-subtitle">We Are Getting Married</span>
+            </h3>
+            <h1 class="couple-names" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">
+                <span id="groom-name">Groom</span> <span class="ampersand">&amp;</span> <span id="bride-name">Bride</span>
+            </h1>
+            <p class="date" id="display-date" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">December 31, 2026</p>
+
+            <div class="countdown-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="label">Mins</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="label">Secs</span>
+                </div>
+            </div>
+
+            <a href="#rsvp" class="hero-cta svg-btn-link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+                <img src="assets/Red & White Simple Staff Only Sign Document.svg" alt="RSVP Background" class="svg-rsvp-btn" />
+                <span class="svg-btn-text khmer-handwriting">ឆ្លើយតបការចូលរួម</span>
+            </a>
+            <div class="hero-scroll-hint" data-aos="fade-up" data-aos-delay="1200">
+                <span>Scroll</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Engagement Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Story <br><span class="khmer-text">រឿងរ៉ាវរបស់យើង</span></h2>
+            <div class="gallery-grid" id="gallery-container"></div>
+        </div>
+    </section>
+
+    <!-- Events & Itinerary -->
+    <section class="events" id="events">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Event Itinerary <br><span class="khmer-text">កម្មវិធីមង្គលការ</span></h2>
+            <div class="events-grid" id="events-container"></div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="container">
+            <div class="rsvp-container" data-aos="zoom-in" data-aos-duration="1000">
+                <h2 class="section-title text-light">RSVP <br><span class="khmer-text">ឆ្លើយតបការចូលរួម</span></h2>
+                <p class="rsvp-desc">Please let us know if you can make it by celebrating with us.</p>
+                <form id="rsvp-form" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="name">Full Name / ឈ្មោះពេញ</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance">Will you attend? / តើអ្នកនឹងចូលរួមទេ?</label>
+                        <select id="attendance" required>
+                            <option value="">Please select...</option>
+                            <option value="yes">Yes, wouldn't miss it!</option>
+                            <option value="no">No, celebrating from afar</option>
+                        </select>
+                    </div>
+                    <div class="form-group hidden" id="plus-one-group">
+                        <label for="plus-one">Bringing a +1? / តើមានអ្នកមកជាមួយទេ?</label>
+                        <select id="plus-one">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group hidden" id="guest-name-group">
+                        <label for="guest-name">Guest's Name / ឈ្មោះអ្នកមកជាមួយ</label>
+                        <input type="text" id="guest-name" placeholder="Enter guest's name">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block khmer-handwriting" style="font-size: 1.15rem;">ផ្ញើការឆ្លើយតប</button>
+                </form>
+                <div id="rsvp-success" class="hidden success-message">
+                    <h3>Thank you! / អរគុណ!</h3>
+                    <p>We look forward to celebrating with you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Guestbook -->
+    <section class="guestbook" id="guestbook">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Digital Guestbook <br><span class="khmer-text">សៀវភៅចំណារពរ</span></h2>
+            <div class="guestbook-container" data-aos="fade-up" data-aos-delay="200">
+                <form id="guestbook-form" class="guestbook-form">
+                    <div class="form-group">
+                        <input type="text" id="wisher-name" required placeholder="Your Name / ឈ្មោះរបស់អ្នក">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="wisher-message" required rows="4" placeholder="Leave a wish for the couple / សូមជូនពរ..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline">Post Wish / បញ្ជូនពរ</button>
+                </form>
+                <div class="wishes-list" id="wishes-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <div class="footer-ornament">&#10022;</div>
+            <h2 id="footer-names">Groom &amp; Bride</h2>
+            <p>We can't wait to celebrate with you!</p>
+            <p class="footer-khmer khmer-text">យើងរង់ចាំឃើញអ្នករីករាយ</p>
+            <div class="footer-ornament">&#10022;</div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
