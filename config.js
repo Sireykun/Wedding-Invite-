@@ -4,7 +4,7 @@
 
 const WEDDING_CONFIG = {
     couple: {
-        groom: "Phanu",
+        groom: "Pengleap",
         bride: "Linna",
         subtitleEnglish: "We Are Getting Married",
         subtitleKhmer: "អញ្ជើញចូលរួមពិធីមង្គលការ"
