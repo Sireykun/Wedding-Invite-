@@ -148,6 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('footer-names').textContent = `${WEDDING_CONFIG.couple.groom} & ${WEDDING_CONFIG.couple.bride}`;
         document.getElementById('english-subtitle').textContent = WEDDING_CONFIG.couple.subtitleEnglish;
         document.getElementById('khmer-subtitle').textContent = WEDDING_CONFIG.couple.subtitleKhmer;
+
+        // Auto-update browser tab title from config
+        document.title = `${WEDDING_CONFIG.couple.groom} & ${WEDDING_CONFIG.couple.bride} - Wedding Invitation`;
         
         const ticketNames = document.querySelector('.ticket-names');
         if (ticketNames) ticketNames.textContent = `${WEDDING_CONFIG.couple.groom} & ${WEDDING_CONFIG.couple.bride}`;
