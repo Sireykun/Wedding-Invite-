@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 dir: Math.random() * Math.PI * 2
             };
         }
-        for (let i = 0; i < 120; i++) particles.push(createParticle());
+        for (let i = 0; i < 30; i++) particles.push(createParticle());
 
         let mouseX = -1000;
         let mouseY = -1000;

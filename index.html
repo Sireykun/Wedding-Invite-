@@ -17,8 +17,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Model Viewer -->
+    <!-- Model Viewer Disabled for Performance
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    -->
 </head>
 <body>
 
@@ -52,24 +53,12 @@
         <source id="main-video-source" src="" type="video/mp4">
     </video>
 
-    <!-- 3D Scroll Parallax Rings -->
+    <!-- 3D Scroll Parallax Rings (Disabled for performance) -->
+    <!--
     <div id="scroll-rings-container">
-        <model-viewer src="ring.glb" 
-                      auto-rotate 
-                      camera-controls 
-                      disable-zoom 
-                      shadow-intensity="1" 
-                      environment-image="neutral"
-                      class="parallax-ring ring-1"></model-viewer>
-        
-        <model-viewer src="ring.glb" 
-                      auto-rotate 
-                      camera-controls 
-                      disable-zoom 
-                      shadow-intensity="1" 
-                      environment-image="neutral"
-                      class="parallax-ring ring-2"></model-viewer>
+        ...
     </div>
+    -->
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
